@@ -59,26 +59,26 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
 
     /**
      * @param int $idCustomer
-     * @param array<int> $productAbstractIds
+     * @param array<int> $idProductAbstracts
      *
      * @return void
      */
-    public function savePermissions(int $idCustomer, array $productAbstractIds): void
+    public function savePermissions(int $idCustomer, array $idProductAbstracts): void
     {
-        if (count($productAbstractIds) === 0) {
+        if (count($idProductAbstracts) === 0) {
             return;
         }
 
         $existingPermissionEntityCollection = $this->queryContainer
-            ->queryProductCustomerPermissionByCustomerAndProducts($idCustomer, $productAbstractIds)
+            ->queryProductCustomerPermissionByCustomerAndProducts($idCustomer, $idProductAbstracts)
             ->find();
         $existingIdProductCustomerPermissions = $this->getExistingIdProductCustomerPermissions($existingPermissionEntityCollection);
 
-        if ($existingPermissionEntityCollection->count() === count($productAbstractIds)) {
+        if ($existingPermissionEntityCollection->count() === count($idProductAbstracts)) {
             return;
         }
 
-        $this->addNewProductPermissions($idCustomer, $existingIdProductCustomerPermissions, $productAbstractIds);
+        $this->addNewProductPermissions($idCustomer, $existingIdProductCustomerPermissions, $idProductAbstracts);
     }
 
     /**
@@ -116,14 +116,14 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
 
     /**
      * @param int $idCustomer
-     * @param array<int> $productAbstractIds
+     * @param array<int> $idProductAbstracts
      *
      * @return void
      */
-    public function deletePermissions(int $idCustomer, array $productAbstractIds): void
+    public function deletePermissions(int $idCustomer, array $idProductAbstracts): void
     {
         $productCustomerPermissionEntities = $this->queryContainer
-            ->queryProductCustomerPermissionByCustomerAndProducts($idCustomer, $productAbstractIds)
+            ->queryProductCustomerPermissionByCustomerAndProducts($idCustomer, $idProductAbstracts)
             ->find();
 
         foreach ($productCustomerPermissionEntities as $productCustomerPermissionEntity) {
