@@ -28,11 +28,6 @@ class ProductCustomerPermissionStorage implements ProductCustomerPermissionStora
      */
     protected $localeClient;
 
-    /**
-     * @param \Spryker\Client\ProductCustomerPermission\Dependency\Client\ProductCustomerPermissionToStorageClientInterface $storage
-     * @param \Spryker\Shared\KeyBuilder\KeyBuilderInterface $keyBuilder
-     * @param \Spryker\Client\ProductCustomerPermission\Dependency\Client\ProductCustomerPermissionToLocaleClientInterface $localeClient
-     */
     public function __construct(
         ProductCustomerPermissionToStorageClientInterface $storage,
         KeyBuilderInterface $keyBuilder,
@@ -43,12 +38,6 @@ class ProductCustomerPermissionStorage implements ProductCustomerPermissionStora
         $this->localeClient = $localeClient;
     }
 
-    /**
-     * @param int $idCustomer
-     * @param int $idProductAbstract
-     *
-     * @return bool
-     */
     public function hasProductCustomerPermission(int $idCustomer, int $idProductAbstract): bool
     {
         $permission = $this->storageClient->get($this->getStorageKey($idCustomer, $idProductAbstract));
@@ -56,12 +45,6 @@ class ProductCustomerPermissionStorage implements ProductCustomerPermissionStora
         return $permission !== null;
     }
 
-    /**
-     * @param int $idCustomer
-     * @param int $idProductAbstract
-     *
-     * @return string
-     */
     protected function getStorageKey(int $idCustomer, int $idProductAbstract): string
     {
         $identifier = $idProductAbstract . '.' . $idCustomer;

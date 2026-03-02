@@ -31,10 +31,6 @@ class ProductCustomerPermissionCartValidator implements ProductCustomerPermissio
      */
     protected $productFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductCustomerPermission\Persistence\ProductCustomerPermissionQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\ProductCustomerPermission\Dependency\Facade\ProductCustomerPermissionToProductFacadeInterface $productFacade
-     */
     public function __construct(
         ProductCustomerPermissionQueryContainerInterface $queryContainer,
         ProductCustomerPermissionToProductFacadeInterface $productFacade
@@ -43,11 +39,6 @@ class ProductCustomerPermissionCartValidator implements ProductCustomerPermissio
         $this->productFacade = $productFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\CartChangeTransfer $cartChangeTransfer
-     *
-     * @return \Generated\Shared\Transfer\CartPreCheckResponseTransfer
-     */
     public function checkPermissions(CartChangeTransfer $cartChangeTransfer): CartPreCheckResponseTransfer
     {
         $cartPreCheckResponseTransfer = new CartPreCheckResponseTransfer();
@@ -70,21 +61,12 @@ class ProductCustomerPermissionCartValidator implements ProductCustomerPermissio
         return $cartPreCheckResponseTransfer;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\MessageTransfer
-     */
     protected function createCartErrorMessage(): MessageTransfer
     {
         return (new MessageTransfer())
             ->setValue(static::MESSAGE_NO_PERMISSION);
     }
 
-    /**
-     * @param int $idCustomer
-     * @param string $concreteProductSku
-     *
-     * @return bool
-     */
     protected function hasPermission(int $idCustomer, string $concreteProductSku): bool
     {
         $idProductAbstract = $this->productFacade

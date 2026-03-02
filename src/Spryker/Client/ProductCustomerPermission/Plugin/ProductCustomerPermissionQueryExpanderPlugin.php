@@ -74,21 +74,11 @@ class ProductCustomerPermissionQueryExpanderPlugin extends AbstractPlugin implem
         return $boolQuery;
     }
 
-    /**
-     * @param int $idCustomer
-     *
-     * @return \Elastica\Query\MatchQuery
-     */
     protected function createCustomerQuery(int $idCustomer): MatchQuery
     {
         return $this->getMatchQuery()->setField(static::ID_CUSTOMER, $idCustomer);
     }
 
-    /**
-     * @param int $idCustomer
-     *
-     * @return \Elastica\Query\HasChild
-     */
     protected function createCustomerFilter(int $idCustomer): HasChild
     {
         $customerQuery = $this->createCustomerQuery($idCustomer);

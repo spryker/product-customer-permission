@@ -30,10 +30,6 @@ class ProductCustomerPermissionCheckoutPreCondition implements ProductCustomerPe
      */
     protected $glossaryFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductCustomerPermission\Persistence\ProductCustomerPermissionQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\ProductCustomerPermission\Dependency\Facade\ProductCustomerPermissionToGlossaryFacadeInterface $glossaryFacade
-     */
     public function __construct(
         ProductCustomerPermissionQueryContainerInterface $queryContainer,
         ProductCustomerPermissionToGlossaryFacadeInterface $glossaryFacade
@@ -42,12 +38,6 @@ class ProductCustomerPermissionCheckoutPreCondition implements ProductCustomerPe
         $this->glossaryFacade = $glossaryFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     * @param \Generated\Shared\Transfer\CheckoutResponseTransfer $checkoutResponseTransfer
-     *
-     * @return bool
-     */
     public function checkPreCondition(QuoteTransfer $quoteTransfer, CheckoutResponseTransfer $checkoutResponseTransfer): bool
     {
         $isPassed = $this->hasCustomerPermissions($quoteTransfer);
@@ -61,11 +51,6 @@ class ProductCustomerPermissionCheckoutPreCondition implements ProductCustomerPe
         return $isPassed;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return \Generated\Shared\Transfer\CheckoutErrorTransfer
-     */
     protected function createCheckoutErrorTransfer(QuoteTransfer $quoteTransfer): CheckoutErrorTransfer
     {
         $message = $this->glossaryFacade->translate(static::MESSAGE_NO_PERMISSION)
@@ -75,11 +60,6 @@ class ProductCustomerPermissionCheckoutPreCondition implements ProductCustomerPe
             ->setMessage($message);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
-     *
-     * @return bool
-     */
     protected function hasCustomerPermissions(QuoteTransfer $quoteTransfer): bool
     {
         $idProductAbstracts = $this->getIdProductAbstracts($quoteTransfer);

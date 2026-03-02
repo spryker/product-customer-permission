@@ -9,11 +9,5 @@ namespace Spryker\Client\ProductCustomerPermission\Storage;
 
 interface ProductCustomerPermissionStorageInterface
 {
-    /**
-     * @param int $idCustomer
-     * @param int $idProductAbstract
-     *
-     * @return bool
-     */
     public function hasProductCustomerPermission(int $idCustomer, int $idProductAbstract): bool;
 }

@@ -33,11 +33,6 @@ class ProductCustomerPermissionDependencyProvider extends AbstractBundleDependen
      */
     public const FACADE_TOUCH = 'FACADE_TOUCH';
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addGlossaryFacade($container);
@@ -47,11 +42,6 @@ class ProductCustomerPermissionDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addGlossaryFacade(Container $container): Container
     {
         $container->set(static::FACADE_GLOSSARY, function (Container $container) {
@@ -61,11 +51,6 @@ class ProductCustomerPermissionDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addProductFacade(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
@@ -75,11 +60,6 @@ class ProductCustomerPermissionDependencyProvider extends AbstractBundleDependen
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addTouchFacade(Container $container): Container
     {
         $container->set(static::FACADE_TOUCH, function (Container $container) {

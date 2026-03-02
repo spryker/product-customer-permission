@@ -25,10 +25,6 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
      */
     protected $touchFacade;
 
-    /**
-     * @param \Spryker\Zed\ProductCustomerPermission\Persistence\ProductCustomerPermissionQueryContainerInterface $queryContainer
-     * @param \Spryker\Zed\ProductCustomerPermission\Dependency\Facade\ProductCustomerPermissionToTouchFacadeInterface $touchFacade
-     */
     public function __construct(
         ProductCustomerPermissionQueryContainerInterface $queryContainer,
         ProductCustomerPermissionToTouchFacadeInterface $touchFacade
@@ -37,12 +33,6 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
         $this->touchFacade = $touchFacade;
     }
 
-    /**
-     * @param int $idCustomer
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     public function savePermission(int $idCustomer, int $idProductAbstract): void
     {
         $productCustomerPermissionEntity = new SpyProductCustomerPermission();
@@ -81,12 +71,6 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
         $this->addNewProductPermissions($idCustomer, $existingIdProductCustomerPermissions, $productAbstractIds);
     }
 
-    /**
-     * @param int $idCustomer
-     * @param int $idProductAbstract
-     *
-     * @return void
-     */
     public function deletePermission(int $idCustomer, int $idProductAbstract): void
     {
         $productCustomerPermissionEntity = $this->queryContainer
@@ -98,11 +82,6 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
         }
     }
 
-    /**
-     * @param int $idCustomer
-     *
-     * @return void
-     */
     public function deleteAllPermissions(int $idCustomer): void
     {
         $productCustomerPermissionEntities = $this->queryContainer
@@ -131,11 +110,6 @@ class ProductCustomerPermissionSaver implements ProductCustomerPermissionSaverIn
         }
     }
 
-    /**
-     * @param \Orm\Zed\ProductCustomerPermission\Persistence\SpyProductCustomerPermission $productCustomerPermissionEntity
-     *
-     * @return void
-     */
     protected function deleteEntity(SpyProductCustomerPermission $productCustomerPermissionEntity): void
     {
         $idProductCustomerPermission = $productCustomerPermissionEntity->getIdProductCustomerPermission();

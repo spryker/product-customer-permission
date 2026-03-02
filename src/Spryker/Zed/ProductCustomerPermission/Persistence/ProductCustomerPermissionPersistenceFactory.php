@@ -16,9 +16,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class ProductCustomerPermissionPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Orm\Zed\ProductCustomerPermission\Persistence\SpyProductCustomerPermissionQuery
-     */
     public function createProductCustomerPermissionQuery(): SpyProductCustomerPermissionQuery
     {
         return SpyProductCustomerPermissionQuery::create();

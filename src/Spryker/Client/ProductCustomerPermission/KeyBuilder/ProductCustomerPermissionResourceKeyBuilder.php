@@ -12,9 +12,6 @@ use Spryker\Shared\ProductCustomerPermission\ProductCustomerPermissionConfig;
 
 class ProductCustomerPermissionResourceKeyBuilder extends SharedResourceKeyBuilder
 {
-    /**
-     * @return string
-     */
     protected function getResourceType(): string
     {
         return ProductCustomerPermissionConfig::RESOURCE_TYPE_PRODUCT_CUSTOMER_PERMISSION;

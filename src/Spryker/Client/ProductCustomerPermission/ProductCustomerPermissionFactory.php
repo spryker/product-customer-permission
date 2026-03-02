@@ -18,9 +18,6 @@ use Spryker\Shared\KeyBuilder\KeyBuilderInterface;
 
 class ProductCustomerPermissionFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\ProductCustomerPermission\Storage\ProductCustomerPermissionStorageInterface
-     */
     public function createStorage(): ProductCustomerPermissionStorageInterface
     {
         return new ProductCustomerPermissionStorage(
@@ -30,33 +27,21 @@ class ProductCustomerPermissionFactory extends AbstractFactory
         );
     }
 
-    /**
-     * @return \Spryker\Shared\KeyBuilder\KeyBuilderInterface
-     */
     protected function createKeyBuilder(): KeyBuilderInterface
     {
         return new ProductCustomerPermissionResourceKeyBuilder();
     }
 
-    /**
-     * @return \Spryker\Client\ProductCustomerPermission\Dependency\Client\ProductCustomerPermissionToCustomerClientInterface
-     */
     public function getCustomerClient(): ProductCustomerPermissionToCustomerClientInterface
     {
         return $this->getProvidedDependency(ProductCustomerPermissionDependencyProvider::CLIENT_CUSTOMER);
     }
 
-    /**
-     * @return \Spryker\Client\ProductCustomerPermission\Dependency\Client\ProductCustomerPermissionToStorageClientInterface
-     */
     public function getStorageClient(): ProductCustomerPermissionToStorageClientInterface
     {
         return $this->getProvidedDependency(ProductCustomerPermissionDependencyProvider::CLIENT_STORAGE);
     }
 
-    /**
-     * @return \Spryker\Client\ProductCustomerPermission\Dependency\Client\ProductCustomerPermissionToLocaleClientInterface
-     */
     public function getLocaleClient(): ProductCustomerPermissionToLocaleClientInterface
     {
         return $this->getProvidedDependency(ProductCustomerPermissionDependencyProvider::CLIENT_LOCALE);

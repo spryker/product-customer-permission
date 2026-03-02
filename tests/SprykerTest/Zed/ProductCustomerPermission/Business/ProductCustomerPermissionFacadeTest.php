@@ -31,9 +31,6 @@ class ProductCustomerPermissionFacadeTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testSaveCustomerProductPermissionAddsProductPermissionToCustomer(): void
     {
         $product = $this->tester->haveProductAbstract();
@@ -49,9 +46,6 @@ class ProductCustomerPermissionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteCustomerProductPermissionRemoveProductPermissionFromCustomer(): void
     {
         $product = $this->tester->haveProductAbstract();
@@ -73,9 +67,6 @@ class ProductCustomerPermissionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testSaveCustomerProductPermissionsAddsSpecifiedProductPermissionsToCustomer(): void
     {
         $customer = $this->tester->haveCustomer();
@@ -97,9 +88,6 @@ class ProductCustomerPermissionFacadeTest extends Unit
         $this->assertEquals($idProductAbstracts, $resultIdProductAbstracts);
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteCustomerProductPermissionsRemoveSpecifiedProductPermissionsFromCustomer(): void
     {
         $customer = $this->tester->haveCustomer();
@@ -122,9 +110,6 @@ class ProductCustomerPermissionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return void
-     */
     public function testDeleteAllCustomerProductPermissionsRemoveAllProductPermissionsFromCustomer(): void
     {
         $customer = $this->tester->haveCustomer();
@@ -147,17 +132,11 @@ class ProductCustomerPermissionFacadeTest extends Unit
         );
     }
 
-    /**
-     * @return \Spryker\Zed\ProductCustomerPermission\Business\ProductCustomerPermissionFacadeInterface
-     */
     protected function getProductCustomerPermissionFacade(): ProductCustomerPermissionFacadeInterface
     {
         return $this->tester->getFacade();
     }
 
-    /**
-     * @return \Spryker\Zed\ProductCustomerPermission\Persistence\ProductCustomerPermissionQueryContainerInterface
-     */
     protected function getQueryContainer(): ProductCustomerPermissionQueryContainerInterface
     {
         return new ProductCustomerPermissionQueryContainer();

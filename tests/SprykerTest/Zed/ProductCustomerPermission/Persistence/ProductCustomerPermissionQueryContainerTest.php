@@ -24,9 +24,6 @@ use Spryker\Zed\ProductCustomerPermission\Persistence\ProductCustomerPermissionQ
  */
 class ProductCustomerPermissionQueryContainerTest extends Unit
 {
-    /**
-     * @return void
-     */
     public function testQueryProductCustomerPermissionByCustomerReturnsCorrectQuery(): void
     {
         $productCustomerPermissionQueryContainer = new ProductCustomerPermissionQueryContainer();
@@ -36,9 +33,6 @@ class ProductCustomerPermissionQueryContainerTest extends Unit
         $this->assertInstanceOf(SpyProductCustomerPermissionQuery::class, $query);
     }
 
-    /**
-     * @return void
-     */
     public function testQueryProductCustomerPermissionByCustomerAndProductsReturnsCorrectQuery(): void
     {
         $productCustomerPermissionQueryContainer = new ProductCustomerPermissionQueryContainer();
