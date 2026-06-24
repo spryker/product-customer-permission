@@ -10,11 +10,15 @@ namespace Spryker\Shared\ProductCustomerPermission;
 interface ProductCustomerPermissionConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const RESOURCE_TYPE_PRODUCT_CUSTOMER_PERMISSION = 'product_customer_permission';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const ELASTICSEARCH_INDEX_TYPE_NAME = 'customer-page';
